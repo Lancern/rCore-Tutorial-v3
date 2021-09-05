@@ -58,7 +58,6 @@ pub fn rust_main() -> ! {
     );
     log::debug!(".bss [{:#x}, {:#x})", sbss as usize, ebss as usize);
 
-    println!("[kernel] Hello, world!");
     trap::init();
     batch::init();
     batch::run_next_app();

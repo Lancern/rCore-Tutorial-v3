@@ -36,7 +36,7 @@ macro_rules! println {
 struct Logger;
 
 impl Log for Logger {
-    fn enabled(&self, metadata: &Metadata) -> bool {
+    fn enabled(&self, _: &Metadata) -> bool {
         true
     }
 
@@ -68,6 +68,6 @@ impl Log for Logger {
 static LOGGER_SINGLETON: Logger = Logger;
 
 pub fn init_log() {
-    log::set_logger(&LOGGER_SINGLETON);
-    log::set_max_level(LevelFilter::Trace);
+    log::set_logger(&LOGGER_SINGLETON).expect("failed to set logger");
+    log::set_max_level(LevelFilter::Info);
 }
